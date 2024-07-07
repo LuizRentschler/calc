@@ -1,58 +1,31 @@
-const prompt = require('prompt-sync')();
-function adicao(n1, n2) {
-    return n1 + n2;
-}
-function subtracao(n1, n2) {
-    return n1 - n2;
-}
-function multiplicao(n1, n2) {
-    return n1 * n2;
-}
-function divisao(n1, n2) {
-    if (n2 === 0) {
-        return "Divisão por zero!!!"
-    } else {
-        return n1 / n2;
+console.log("Bem vindo, sou uma calculadora básica, o que deseja? :)")
+let prompt = require('prompt-sync')();
+
+function calcular(numb1, numb2, operador){
+    switch(operador){
+        case '+':
+            return numb1 + numb2;
+        case '-':
+            return numb1 - numb2;
+        case '*':
+            return numb1 * numb2;
+        case '/':
+            if(numb2 === 0){
+                return "erro na divisão por 0"
+            }
+            return numb1 / numb2;
+        
+        case '%':
+            return (numb1 / 100) * numb2;
+        default:
+            return 'inexistente, utilize apenas números e o operador correto';
     }
 }
-function porcentagem(num, percent) {
-    return (num * percent) / 100;
-}
 
-function calculadora() { 
-    let operacao = prompt("Escolha uma operação +(adicao) -(subtracao) *(multiplicao) /(divisão) %(porcentagem)")
-}
-let num1 = parseFloat(prompt("Digite o primeiro numero"));
-let num2 = parseFloat(prompt("Digite o segundo numero"));
+let numb1 = parseFloat (prompt('Digite o primeiro número: '));
+let operador = prompt('Digite o operador(+, -, *, / ou %): ');
+let numb2 = parseFloat(prompt('Digite o segundo número: '));
 
-let resultado;
+let res = calcular(numb1, numb2, operador);
 
-switch (operacao) {
-    case '+':
-        resultado = adicao(n1, n2);
-        break;
-        }
-        switch (operacao) {
-            case '-':
-                resultado = subtracao(n1, n2);
-                
-                break;
-}
-switch (operacao) {
-    case '*':
-        resultado = multiplicao(n1, n2);
-        
-        break;
-        }
-        switch (operacao) {
-            case '/':
-                resultado = divisao(n1, n2);
-                
-                break;
-                }
-                switch (operacao) {
-                    case '%':
-                        resultado = porcentagem(n1, n2);
-                        
-                        break;
-                        }
+console.log("O resultado é: " + res);
